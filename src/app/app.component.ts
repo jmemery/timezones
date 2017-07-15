@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  time = new Date();
+  lastTimeZoneSelected = null;
+
+  getDateByZone(timezone) {
+    this.time = new Date();
+    if (timezone === 'MST') {
+      this.time.setHours(this.time.getHours() + 1);
+    } else if (timezone === 'CST') {
+      this.time.setHours(this.time.getHours() + 2);
+    } else if (timezone === 'EST') {
+      this.time.setHours(this.time.getHours() + 3);
+    } else if (timezone === 'GMT'){
+      this.time.setHours(this.time.getHours() + 7);
+    } else if (timezone === 'AEST'){
+      this.time.setHours(this.time.getHours() +17);
+    }
+    this.lastTimeZoneSelected = timezone;
+  }
+
 }
